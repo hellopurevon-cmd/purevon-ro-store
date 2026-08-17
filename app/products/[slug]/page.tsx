@@ -66,8 +66,13 @@ export default function ProductDetailsPage({ params }: Props) {
   }
 
   function handleAddToCart() {
+    if (!product) {
+      toast.error("Product not found.");
+      return;
+    }
+  
     if (product.stock <= 0) {
-      toast.error("Out of stock!");
+      toast.error("out of stock!");
       return;
     }
   
@@ -88,6 +93,9 @@ export default function ProductDetailsPage({ params }: Props) {
 
   function handleQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = parseInt(e.target.value);
+  
+    if (!product) return;
+  
     if (!isNaN(val) && val > 0) {
       setQuantity(Math.min(val, product.stock));
     }
