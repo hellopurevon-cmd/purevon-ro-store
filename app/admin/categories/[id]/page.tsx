@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import EditCategoryForm from "@/components/admin/EditCategoryForm";
+import EditCategoryForm from "@/components/admin/editCategoryForm";
 
 type Props = {
   params: Promise<{
